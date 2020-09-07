@@ -12,14 +12,15 @@ const Cell = (props) => (
     className="cell"
     style={{ backgroundColor: color(props.player) }}
     id={props.id}
-    onClick={props.moveAction}
+    onClick={props.finished ? null : props.moveAction}
   >
   </td>
 );
 
 const mapStateToProps = ( state, props ) => {
   return {
-    player: state.board.board[props.id]
+    player: state.board.board[props.id],
+    finished: state.board.finished
   }
 }
 
