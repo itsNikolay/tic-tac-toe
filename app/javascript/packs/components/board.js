@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Cell from './cell';
-
 import { connect } from "react-redux"
-
 import {moveAction } from "../actions/board_action"
 
 const Board = (props) => (

@@ -9,7 +9,7 @@ const color = (player) => {
 
 const Cell = (props) => (
   <td
-    className={`cell ${props.player}`}
+    className="cell"
     style={{ backgroundColor: color(props.player) }}
     id={props.id}
     onClick={props.moveAction}

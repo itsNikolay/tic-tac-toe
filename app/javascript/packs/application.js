@@ -38,14 +38,14 @@ import { Provider } from 'react-redux'
 import store from './store'
 
 // import App from './components/app'
-import Board from './components/board';
+import App from './components/app';
 
 const rootElement = document.getElementById('root')
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={store}>
-      <Board />
+      <App />
     </Provider>,
     document.body.appendChild(document.createElement('div')),
   )

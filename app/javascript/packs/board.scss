@@ -40,14 +40,16 @@ td {
 }
 
 table{
-  position:absolute;
-  left:50%;
-  margin-left:-150px;
-  top:10%;
+  margin: 0 auto;
 }
+
 html{
   width:100%;
   height:100%;
   background:linear-gradient(#f7aeb7, #ffcccc, #ffeee6);
 
+}
+.notification {
+  margin: 0 auto;
+  text-align: center;
 }
