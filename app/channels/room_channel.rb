@@ -7,6 +7,7 @@ class RoomChannel < ApplicationCable::Channel
     @room.update!(subscribed_user_ids: subscribed_user_ids)
     stream_for current_user
     broadcast_subscribers
+    broadcast_to(current_user, current_user_id: current_user.id)
   end
 
   def unsubscribed; end
@@ -17,7 +18,7 @@ class RoomChannel < ApplicationCable::Channel
     index = data['index'].to_i
     cells[index] = current_user.id
 
-    @room.update!(cells: cells, current_turn_user_id: current_user.id, winner: winning)
+    @room.update!(cells: cells, current_turn_user_id: current_turn_user_id, winner: winning)
     broadcast_subscribers
   end
 
@@ -38,13 +39,20 @@ class RoomChannel < ApplicationCable::Channel
     board = @room.cells
     player = current_user.id
 
-    (board[0] == player && board[1] == player && board[2] == player) ||
-      (board[3] == player && board[4] == player && board[5] == player) ||
-      (board[6] == player && board[7] == player && board[8] == player) ||
-      (board[0] == player && board[3] == player && board[6] == player) ||
-      (board[1] == player && board[4] == player && board[7] == player) ||
-      (board[2] == player && board[5] == player && board[8] == player) ||
-      (board[0] == player && board[4] == player && board[8] == player) ||
-      (board[2] == player && board[4] == player && board[6] == player)
+    return unless (board[0] == player && board[1] == player && board[2] == player) ||
+                  (board[3] == player && board[4] == player && board[5] == player) ||
+                  (board[6] == player && board[7] == player && board[8] == player) ||
+                  (board[0] == player && board[3] == player && board[6] == player) ||
+                  (board[1] == player && board[4] == player && board[7] == player) ||
+                  (board[2] == player && board[5] == player && board[8] == player) ||
+                  (board[0] == player && board[4] == player && board[8] == player) ||
+                  (board[2] == player && board[4] == player && board[6] == player)
+
+    player
+  end
+
+  def current_turn_user_id
+    index = @room.subscribed_user_ids.index(current_user.id)
+    @room.subscribed_user_ids[index - 1]
   end
 end
