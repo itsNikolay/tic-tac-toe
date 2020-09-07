@@ -13,7 +13,6 @@ const Winner = (props) => (
 
 const mapStateToProps = (state) => {
   const winner = state.board.winner;
-  console.log('winnder' , winner);
   return {
     winner: state.board.winner
   }

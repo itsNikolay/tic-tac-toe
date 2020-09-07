@@ -18,7 +18,6 @@ const winning = (board, player) => {
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
-  console.log(state, action);
   switch (action.type) {
     case 'move':
       const player = state.currentPlayer == 0 ? 'P1' : 'P2'

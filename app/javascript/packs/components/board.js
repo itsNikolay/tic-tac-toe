@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import Cell from './cell';
 
 const Board = (props) => (
-  <table class="table">
+  <table className="table">
     <tbody>
       <tr>
         <Cell className="cell" id="0" />
