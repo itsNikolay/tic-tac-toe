@@ -4,7 +4,7 @@ server:
 	bin/rails s
 
 bundle:
-	bundle check || bundle install
+	(bundle check || bundle install) && yarn install
 
 lint:
 	bin/rubocop -A --only Style/FrozenStringLiteralComment && \
@@ -20,7 +20,6 @@ setup: bundle
 	bin/rails \
 	  db:drop \
 	  db:create \
-	  db:schema:load \
 	  db:migrate \
 	  db:seed
 
