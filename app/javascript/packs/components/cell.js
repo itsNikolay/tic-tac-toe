@@ -1,31 +1,32 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from "react-redux"
+import {moveAction } from "../actions/board_action"
 
-class Cell extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {}
-  }
+const color = (player) => {
+  return ( player == 'P1' ? 'black' : null ) || ( player == 'P2' ? 'white' : null )
+};
 
-  handleClick(e) {
-    console.log(e);
-  }
+const Cell = (props) => (
+  <td
+    className={`cell ${props.player}`}
+    style={{ backgroundColor: color(props.player) }}
+    id={props.id}
+    onClick={props.moveAction}
+  >
+  </td>
+);
 
-  render() {
-    return (
-      <td
-        className="cell ${this.props.state}"
-        id={this.props.id}
-        onClick={this.handleClick}
-      >
-      </td>
-    );
+const mapStateToProps = ( state, props ) => {
+  return {
+    player: state.board.board[props.id]
   }
 }
 
-Cell.propTypes = {
-  id: PropTypes.string,
-  state: PropTypes.string
-};
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    moveAction: () => dispatch(moveAction(props.id))
+  }
+}
 
-export default Cell;
+export default connect(mapStateToProps, mapDispatchToProps)(Cell)

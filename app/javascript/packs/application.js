@@ -18,15 +18,35 @@ require("channels")
 import './board';
 // import './tic-tac-toe';
 
+// import React from 'react'
+// import ReactDOM from 'react-dom'
+// import Hello from './components/hello';
+// import Board from './components/board';
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   ReactDOM.render(
+//     <Board />,
+//     document.body.appendChild(document.createElement('div')),
+//   )
+// })
+
+
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Hello from './components/hello';
+
+import { Provider } from 'react-redux'
+import store from './store'
+
+// import App from './components/app'
 import Board from './components/board';
+
+const rootElement = document.getElementById('root')
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Board />,
+    <Provider store={store}>
+      <Board />
+    </Provider>,
     document.body.appendChild(document.createElement('div')),
   )
 })
-

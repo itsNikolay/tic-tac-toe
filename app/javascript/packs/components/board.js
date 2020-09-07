@@ -2,40 +2,42 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Cell from './cell';
 
-class Board extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+import { connect } from "react-redux"
 
-    }
-  }
+import {moveAction } from "../actions/board_action"
 
-  render() {
-    return (
-      <table>
-        <tbody>
-          <tr>
-            <Cell className = "cell" id = "0" />
-            <Cell className = "cell" id = "1" />
-            <Cell className = "cell" id = "2" />
-          </tr>
-          <tr>
-            <Cell className = "cell" id = "3" />
-            <Cell className = "cell" id = "4" />
-            <Cell className = "cell" id = "5" />
-          </tr>
-          <tr>
-            <Cell className = "cell" id = "6" />
-            <Cell className = "cell" id = "7" />
-            <Cell className = "cell" id = "8" />
-          </tr>
-        </tbody>
-      </table>
-    );
+const Board = (props) => (
+  <table>
+    <tbody>
+      <tr>
+        <Cell className = "cell" id = "0" />
+        <Cell className = "cell" id = "1" />
+        <Cell className = "cell" id = "2" />
+      </tr>
+      <tr>
+        <Cell className = "cell" id = "3" />
+        <Cell className = "cell" id = "4" />
+        <Cell className = "cell" id = "5" />
+      </tr>
+      <tr>
+        <Cell className = "cell" id = "6" />
+        <Cell className = "cell" id = "7" />
+        <Cell className = "cell" id = "8" />
+      </tr>
+    </tbody>
+  </table>
+)
+
+const mapStateToProps = state => {
+  return {
+    state
   }
 }
 
-Board.propTypes = {
-};
+const mapDispatchToProps = dispatch => {
+  return {
+    moveAction: () => dispatch(moveAction()),
+  }
+}
 
-export default Board;
+export default connect(mapStateToProps, mapDispatchToProps)(Board)
