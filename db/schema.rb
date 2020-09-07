@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_175825) do
     t.integer "cells", default: [], null: false, array: true
     t.integer "current_turn_user_id"
     t.integer "subscribed_user_ids", default: [], array: true
+    t.integer "winner"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cells"], name: "index_rooms_on_cells"

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from "react-redux"
-import {newGameAction } from "../actions/channel_actions"
+import {newGameAction } from "../actions/board_action"
 
 const NewGame = (props) => (
   <button onClick={props.newGame}>

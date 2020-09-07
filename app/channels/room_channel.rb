@@ -17,12 +17,12 @@ class RoomChannel < ApplicationCable::Channel
     index = data['index'].to_i
     cells[index] = current_user.id
 
-    @room.update!(cells: cells, current_turn_user_id: current_user.id)
+    @room.update!(cells: cells, current_turn_user_id: current_user.id, winner: winning)
     broadcast_subscribers
   end
 
   def new_game
-    @room.update!(cells: Array.new(3 * 3))
+    @room.update!(cells: Array.new(3 * 3), winner: nil)
     broadcast_subscribers
   end
 
@@ -32,5 +32,19 @@ class RoomChannel < ApplicationCable::Channel
     User.where(id: @room.subscribed_user_ids).each do |user|
       broadcast_to(user, room: @room)
     end
+  end
+
+  def winning
+    board = @room.cells
+    player = current_user.id
+
+    (board[0] == player && board[1] == player && board[2] == player) ||
+      (board[3] == player && board[4] == player && board[5] == player) ||
+      (board[6] == player && board[7] == player && board[8] == player) ||
+      (board[0] == player && board[3] == player && board[6] == player) ||
+      (board[1] == player && board[4] == player && board[7] == player) ||
+      (board[2] == player && board[5] == player && board[8] == player) ||
+      (board[0] == player && board[4] == player && board[8] == player) ||
+      (board[2] == player && board[4] == player && board[6] == player)
   end
 end

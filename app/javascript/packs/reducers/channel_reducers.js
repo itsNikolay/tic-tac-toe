@@ -26,6 +26,11 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
       };
+    case 'buildBoard':
+      return {
+        ...state,
+        ...action.board
+      };
     default: return state;
   }
 };

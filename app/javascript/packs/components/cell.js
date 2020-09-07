@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux"
-import {moveRoomChannelAction } from "../actions/channel_actions"
+import {moveRoomChannelAction } from "../actions/board_action"
 
 const backgroundColor = (player) => (
   (player == 1 ? 'black' : null) || (player == 2 ? 'white' : null)
@@ -12,15 +12,15 @@ const Cell = (props) => (
     className="cell"
     style={{ backgroundColor: backgroundColor(props.player) }}
     id={props.id}
-    onClick={props.finished ? null : props.moveAction}
+    onClick={props.moveAction}
   >
   </td>
 );
 
 const mapStateToProps = ( state, props ) => {
+  console.log(state);
   return {
-    player: state.board.board[props.id],
-    finished: state.board.finished
+    player: state.board.room.cells[props.id],
   }
 }
 

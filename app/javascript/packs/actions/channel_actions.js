@@ -21,16 +21,3 @@ export const createChannelAction = (channel, received) => {
     received
   };
 };
-
-export const moveRoomChannelAction = (index) => { 
-  return {
-    type: 'moveRoomChannelAction',
-    index
-  };
-};
-
-export const newGameAction = () => {
-  return {
-    type: 'newGameAction'
-  };
-};
