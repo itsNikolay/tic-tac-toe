@@ -15,21 +15,21 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-import './styles/board';
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import store from './store'
 import App from './components/app';
 
-const rootElement = document.getElementById('root')
+import './styles/board';
 
 document.addEventListener('DOMContentLoaded', () => {
+  const rootElement = document.querySelector('#root')
+
   ReactDOM.render(
     <Provider store={store}>
       <App />
     </Provider>,
-    document.body.appendChild(document.createElement('div')),
+    document.body.appendChild(rootElement),
   )
 })
