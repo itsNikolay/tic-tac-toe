@@ -16,4 +16,17 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 import './board';
-import './tic-tac-toe';
+// import './tic-tac-toe';
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Hello from './components/hello';
+import Board from './components/board';
+
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(
+    <Board />,
+    document.body.appendChild(document.createElement('div')),
+  )
+})
+
