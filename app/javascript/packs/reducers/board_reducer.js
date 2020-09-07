@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  board: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+  board: [null, null, null, null, null, null, null, null, null],
   round: 0,
   currentPlayer: 0,
   winner: null,
@@ -23,6 +23,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       const player = state.currentPlayer == 0 ? 'P1' : 'P2'
       const board = state.board.map((el, index) => (index == action.index ? player : el));
       const winner = winning(board, player) ? player : undefined ;
+
       return {
         ...state,
         ...{ board: board },
@@ -30,6 +31,11 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...{ currentPlayer: state.currentPlayer == 0 ? 1 : 0 },
         ...{ winner: winner },
         ...{ finished: !!winner }
+      };
+    case 'buildBoard':
+      return {
+        ...state,
+        ...{ board: action.board.room.cells }
       };
     default: return state;
   }

@@ -4,3 +4,10 @@ export const moveAction = (index) => {
     index
   };
 };
+
+export const buildBoardAction = (board) => { 
+  return {
+    type: 'buildBoard',
+    board
+  };
+};

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux"
-import {moveAction } from "../actions/board_action"
+import {moveRoomChannelAction } from "../actions/channel_actions"
 
 const backgroundColor = (player) => (
-  (player == 'P1' ? 'black' : null) || (player == 'P2' ? 'white' : null)
+  (player == 1 ? 'black' : null) || (player == 2 ? 'white' : null)
 )
 
 const Cell = (props) => (
@@ -26,7 +26,7 @@ const mapStateToProps = ( state, props ) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    moveAction: () => dispatch(moveAction(props.id))
+    moveAction: () => dispatch(moveRoomChannelAction(props.id))
   }
 }
 
