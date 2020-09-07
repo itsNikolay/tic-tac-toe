@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Cell from './cell';
 import { connect } from "react-redux"
-import {moveAction } from "../actions/board_action"
+import Cell from './cell';
 
 const Board = (props) => (
   <table>
@@ -32,10 +31,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    moveAction: () => dispatch(moveAction()),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Board)
+export default connect(mapStateToProps)(Board)

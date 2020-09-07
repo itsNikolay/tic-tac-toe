@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux"
 import {moveAction } from "../actions/board_action"
 
-const color = (player) => {
-  return ( player == 'P1' ? 'black' : null ) || ( player == 'P2' ? 'white' : null )
-};
+const backgroundColor = (player) => (
+  (player == 'P1' ? 'black' : null) || (player == 'P2' ? 'white' : null)
+)
 
 const Cell = (props) => (
   <td
     className="cell"
-    style={{ backgroundColor: color(props.player) }}
+    style={{ backgroundColor: backgroundColor(props.player) }}
     id={props.id}
     onClick={props.finished ? null : props.moveAction}
   >
