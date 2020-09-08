@@ -39,5 +39,5 @@ deploy-add:
 deploy:
 	git push dokku master
 
-deploy:
+open:
 	open http://$(HOST_ADDRESS)
