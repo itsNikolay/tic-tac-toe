@@ -7,7 +7,7 @@ class RoomChannel < ApplicationCable::Channel
     @room.update!(subscribed_user_ids: subscribed_user_ids)
     stream_for current_user
     broadcast_subscribers
-    broadcast_to(current_user, current_user_id: current_user.id)
+    broadcast_to(current_user, current_user_id: current_user.id, current_user_name: current_user.name)
   end
 
   def unsubscribed; end

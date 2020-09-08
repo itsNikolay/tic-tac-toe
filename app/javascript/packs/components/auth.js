@@ -4,23 +4,29 @@ import { connect } from "react-redux"
 
 const Auth = (props) => (
   <ul>
-    <li>
-      <a href="/auth?name=Tobias" data-method="post">
-        Log in as Tobias
-      </a>
-    </li>
-    <li>
-      <a href="/auth?name=Nikolay" data-method="post">
-        Log in as Nikolay
-      </a>
-    </li>
+    { props.currentUserName
+      ? <li>You looged aas {props.currentUserName}</li>
+      :
+      <div>
+        <li>
+          <a href="/auth?name=Tobias" data-method="post">
+            Log in as Tobias
+          </a>
+        </li>
+        <li>
+          <a href="/auth?name=Nikolay" data-method="post">
+            Log in as Nikolay
+          </a>
+        </li>
+      </div>
+    }
   </ul>
 );
 
 
 const mapStateToProps = (state) => {
   return {
-    state
+    currentUserName: state.board.currentUserName
   }
 }
 

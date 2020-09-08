@@ -1,22 +1,25 @@
 const INITIAL_STATE = {
   room: { cells: [] },
-  current_user_id: null,
+  currentUserId: null,
+  currentUserName: null,
   currentUserTurn: false
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'buildBoard':
-      const current_user_id =
-        action.board && action.board.current_user_id ||
-        state && state.current_user_id
+      const currentUserId =
+        action.board && action.board.current_user_id || state.currentUserId
+      const currentUserName =
+        action.board && action.board.current_user_name || state.currentUserName;
 
-      const currentUserTurn = current_user_id ===  state.room.current_turn_user_id
+      const currentUserTurn = currentUserId ===  state.room.current_turn_user_id
 
       return {
         ...state,
         ...action.board,
-        ...current_user_id,
+        currentUserId,
+        currentUserName,
         currentUserTurn
       };
     default: return state;
