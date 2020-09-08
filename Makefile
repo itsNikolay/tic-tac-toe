@@ -24,6 +24,7 @@ setup: bundle
 	bin/rails \
 	  db:drop \
 	  db:create \
+	  db:schema:load \
 	  db:migrate \
 	  db:seed
 
@@ -37,7 +38,7 @@ deploy-add:
 	git remote add dokku dokku@$(HOST_ADDRESS):$(APP_NAME)
 
 deploy:
-	git push dokku master
+	git push dokku backend:master
 
 open:
 	open http://$(HOST_ADDRESS)
