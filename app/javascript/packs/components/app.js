@@ -6,7 +6,7 @@ import Winner from './winner';
 import NewGame from './new_game';
 
 const App = () => (
-  <div>
+  <div className="container">
     <Auth />
     <NewGame />
     <Winner />

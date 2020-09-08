@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { connect } from "react-redux"
 
 const Winner = (props) => (
-  <h1 className="notification">
+  <h1 className="center">
     { !props.winner && props.currentTurnUserId == 1 ? 'Tobias turn' : null }
     { !props.winner && props.currentTurnUserId == 2 ? 'Nikolay turn' : null }
     { props.winner == 1 ? 'Winner is Tobias!' : null }

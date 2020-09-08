@@ -11,7 +11,7 @@ const Board = (props) => {
   }, []);
 
   return (
-    <table className="table">
+    <table className="tik-tak-toe-table">
       <tbody>
         <tr>
           <Cell className="cell" id="0" />

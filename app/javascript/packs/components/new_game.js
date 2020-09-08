@@ -2,11 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from "react-redux"
 import {newGameAction } from "../actions/board_action"
+import Button from 'react-bootstrap/Button';
 
 const NewGame = (props) => (
-  <button onClick={props.newGame}>
+  <Button onClick={props.newGame} className="btn center">
     New Game
-  </button>
+  </Button>
 );
 
 const mapStateToProps = (state) => {

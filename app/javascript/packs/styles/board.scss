@@ -1,4 +1,4 @@
-html{
+html, body {
   width:100%;
   height:100%;
   background:linear-gradient(#f7aeb7, #ffcccc, #ffeee6);
@@ -12,11 +12,11 @@ html{
   border-width: 15px;
 }
 
-.table {
+.tik-tak-toe-table {
   margin: 0 auto;
 }
 
-.notification {
+.center {
   margin: 0 auto;
   text-align: center;
 }
