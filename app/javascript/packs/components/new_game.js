@@ -5,9 +5,13 @@ import {newGameAction } from "../actions/board_action"
 import Button from 'react-bootstrap/Button';
 
 const NewGame = (props) => (
-  <Button onClick={props.newGame} className="btn center">
-    New Game
-  </Button>
+  <div className="row">
+    <div className="col-md-12 text-center">
+      <Button onClick={props.newGame} className="btn center top-margin">
+        New Game
+      </Button>
+    </div>
+  </div>
 );
 
 const mapStateToProps = (state) => {

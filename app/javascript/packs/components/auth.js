@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 const Auth = (props) => (
   <ul>
     { props.currentUserName
-      ? <li>You looged aas {props.currentUserName}</li>
+      ? <h2>You logged in as {props.currentUserName}</h2>
       :
       <div>
         <li>

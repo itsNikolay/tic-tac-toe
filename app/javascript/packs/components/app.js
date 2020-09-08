@@ -8,9 +8,9 @@ import NewGame from './new_game';
 const App = () => (
   <div className="container">
     <Auth />
-    <NewGame />
     <Winner />
     <Board />
+    <NewGame />
   </div>
 );
 
