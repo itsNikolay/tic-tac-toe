@@ -43,6 +43,10 @@ module Rooms
       room
     end
 
+    def subscribers
+      User.where(id: @room.subscribed_user_ids)
+    end
+
     private
 
     def winning
@@ -58,7 +62,7 @@ module Rooms
     end
 
     def current_turn_user_id
-      index = room.subscribed_user_ids.index(current_user.id)
+      index = room.subscribed_user_ids.index(current_user.id) || current_user.id
       room.subscribed_user_ids[index - 1]
     end
 
