@@ -12,16 +12,16 @@ const Cell = (props) => (
     className="cell"
     style={{ backgroundColor: backgroundColor(props.player) }}
     id={props.id}
-    onClick={props.currentUserTurn ? props.moveAction : () => {}}
+    onClick={!props.winnder && props.currentUserTurn ? props.moveAction : () => {}}
   >
   </td>
 );
 
 const mapStateToProps = ( state, props ) => {
-  console.log(state);
   return {
     player: state.board.room.cells[props.id],
     currentUserTurn: state.board.currentUserTurn,
+    winner: state.board.room.winner
   }
 }
 

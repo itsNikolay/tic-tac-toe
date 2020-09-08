@@ -12,8 +12,10 @@ const reducer = (state = INITIAL_STATE, action) => {
         action.board && action.board.current_user_id || state.currentUserId
       const currentUserName =
         action.board && action.board.current_user_name || state.currentUserName;
+      const actionTurn = action.board.room && action.board.room.current_turn_user_id || state.room.current_turn_user_id
+      const currentUserTurn = currentUserId === actionTurn;
 
-      const currentUserTurn = currentUserId ===  state.room.current_turn_user_id
+      console.log(currentUserId, actionTurn, currentUserTurn);
 
       return {
         ...state,
