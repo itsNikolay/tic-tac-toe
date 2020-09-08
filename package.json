@@ -20,6 +20,11 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@testing-library/react": "^11.0.2",
+    "jest": "^26.4.2",
     "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "test": "jest app/javascript/tests"
   }
 }
