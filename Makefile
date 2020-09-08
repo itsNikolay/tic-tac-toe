@@ -1,5 +1,9 @@
 .PHONY: server bundle lint console test setup deploy-add deploy ssh routes tags open
 
+export APP_NAME=tik-tak-toe
+export DB_NAME=tik_production
+export HOST_ADDRESS=207.154.229.149
+
 server:
 	bin/rails s
 
@@ -28,3 +32,9 @@ routes:
 
 tags:
 	ctags -R .
+
+deploy-add:
+	git remote add dokku dokku@$(HOST_ADDRESS):$(APP_NAME)
+
+deploy:
+	git push dokku master
