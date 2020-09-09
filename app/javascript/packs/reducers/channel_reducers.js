@@ -8,7 +8,6 @@ const INITIAL_STATE = {
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'createChannel':
-      const roomChannel = consumer.subscriptions.create("RoomChannel", { received: action.received });
 
       return {
         ...state,

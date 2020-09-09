@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux"
 import Cell from './cell';
-import {buildBoardAction } from "../actions/board_action"
-import {createChannelAction } from "../actions/channel_actions"
+import { create, build } from '../features/boardSlice';
 
 const Board = (props) => {
   useEffect(() => {
@@ -40,10 +39,10 @@ const mapStateToProps = ( state, props ) => {
 }
 
 const mapDispatchToProps = (dispatch, props) => {
-  const received = result => dispatch(buildBoardAction(result))
+  const received = result => dispatch(build(result))
 
   return {
-    subscribe: () => dispatch(createChannelAction('RoomChannel', received))
+    subscribe: () => dispatch(create({ room: 'RoomChannel', received }))
   }
 }
 

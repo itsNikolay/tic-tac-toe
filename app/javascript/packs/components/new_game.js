@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from "react-redux"
-import {newGameAction } from "../actions/board_action"
+import {newGame } from "../features/boardSlice"
 import Button from 'react-bootstrap/Button';
 
 const NewGame = (props) => (
@@ -22,7 +22,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    newGame: () => dispatch(newGameAction())
+    newGame: () => dispatch(newGame())
   }
 }
 

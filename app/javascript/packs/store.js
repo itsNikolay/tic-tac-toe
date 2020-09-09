@@ -1,13 +1,14 @@
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './reducers'
-// import cableMiddleware from './middlewares/cableMiddleware';
+import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger'
+import currentUser from './features/currentUserSlice';
+import board from './features/boardSlice';
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(logger)
-  // applyMiddleware(cableMiddleware())
-);
-
-export default store;
-
+export default configureStore({
+  reducer: {
+    currentUser,
+    board
+  },
+  middleware: [
+    logger
+  ]
+});

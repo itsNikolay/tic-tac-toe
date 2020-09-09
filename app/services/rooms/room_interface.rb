@@ -31,7 +31,6 @@ module Rooms
 
     def move(index)
       room.reload
-      cells = @room.cells.to_a
       cells[index.to_i] = current_user.id
 
       room.update!(cells: cells, current_turn_user_id: current_turn_user_id, winner: winning)

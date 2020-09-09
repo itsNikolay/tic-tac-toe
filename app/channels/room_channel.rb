@@ -3,7 +3,6 @@ class RoomChannel < ApplicationCable::Channel
     @room = Rooms::RoomInterface.new(current_user, nil).build
     stream_for current_user
     broadcast_subscribers
-    broadcast_to(current_user, current_user_id: current_user.id, current_user_name: current_user.name)
   end
 
   def unsubscribed; end
