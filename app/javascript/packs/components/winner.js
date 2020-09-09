@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { connect } from "react-redux"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 
 const Winner = (props) => (
   <h1 className="center">
@@ -11,13 +11,12 @@ const Winner = (props) => (
   </h1>
 );
 
-
 const mapStateToProps = (state) => {
   const { winner, current_turn_user_id } = state.board.room;
   return {
     winner,
-    current_turn_user_id
-  }
-}
+    current_turn_user_id,
+  };
+};
 
-export default connect(mapStateToProps)(Winner)
+export default connect(mapStateToProps)(Winner);

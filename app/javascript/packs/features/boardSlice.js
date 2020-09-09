@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import consumer from "../channels/consumer"
+import consumer from '../channels/consumer';
 
 export const slice = createSlice({
   name: 'board',
@@ -12,18 +12,19 @@ export const slice = createSlice({
       state.room = room;
     },
     create: (state, action) => {
-      state.channel =
-        consumer.subscriptions.create("RoomChannel", { received: action.payload.received });
+      state.channel = consumer.subscriptions.create('RoomChannel', { received: action.payload.received });
     },
     move: (state, action) => {
       state.channel.perform('move', { index: action.payload });
     },
     newGame: (state, action) => {
       state.channel.perform('new_game');
-    }
+    },
   },
 });
 
-export const { build, create, move, newGame } = slice.actions;
+export const {
+  build, create, move, newGame,
+} = slice.actions;
 
 export default slice.reducer;

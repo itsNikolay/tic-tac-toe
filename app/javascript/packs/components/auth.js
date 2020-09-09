@@ -1,24 +1,22 @@
 import React, { useState, useEffect, useContext } from 'react';
-import ReactDOM from 'react-dom'
-import { connect } from "react-redux"
+import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 import { signOut } from '../features/currentUserSlice';
 import { UserContext } from './UserContext';
 
 const Auth = (props) => {
-  const currentUser = useContext(UserContext)
+  const currentUser = useContext(UserContext);
 
   return (
     <ul>
       { currentUser.id
-        ?
-          <div>
+        ? <div>
             <h2>You logged in as {currentUser.name}</h2>
-            <a onClick={props.signOut} style={{cursor: 'pointer'}}>
+            <a onClick={props.signOut} style={{ cursor: 'pointer' }}>
               Log Out
             </a>
           </div>
-          :
-          <div>
+        : <div>
             <li>
               <a href="/auth?name=Tobias" data-method="post">
                 Log in as Tobias
@@ -35,18 +33,12 @@ const Auth = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  state,
+});
 
-const mapStateToProps = (state) => {
-  return {
-    state
-  }
-}
+const mapDispatchToProps = (dispatch, props) => ({
+  signOut: () => dispatch(signOut()),
+});
 
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    signOut: () => dispatch(signOut()),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Auth)
-
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

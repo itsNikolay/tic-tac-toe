@@ -1,10 +1,4 @@
-import React, { useEffect } from 'react'
-
-const UserContext = React.createContext({id: null, name: null})
-
-const UserProvider = UserContext.Provider
-
-export { UserProvider, UserContext }
+import React, { useEffect } from 'react';
 
 // Component
 
@@ -16,26 +10,28 @@ export { UserProvider, UserContext }
 // const Auth = (props) => {
 //   const currentUser = useContext(UserContext)
 
-import { connect } from "react-redux"
+import { connect } from 'react-redux';
 import { create, build } from '../features/currentUserSlice';
 
-const UserProviderComponent = (props) => {
-  return (
+const UserContext = React.createContext({ id: null, name: null });
+
+const UserProvider = UserContext.Provider;
+
+export { UserProvider, UserContext };
+
+const UserProviderComponent = (props) => (
     <UserProvider value={props.currentUser}>
       {props.children}
     </UserProvider>
-  );
-};
+);
 
-const mapStateToProps = ({ currentUser }) => {
-  return { currentUser }
-}
+const mapStateToProps = ({ currentUser }) => ({ currentUser });
 
 const mapDispatchToProps = (dispatch, props) => {
-  const received = result => dispatch(build(result))
-  dispatch(create({ room: 'AuthChannel', received }))
+  const received = (result) => dispatch(build(result));
+  dispatch(create({ room: 'AuthChannel', received }));
 
-  return props
-}
+  return props;
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProviderComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(UserProviderComponent);

@@ -1,8 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { connect } from "react-redux"
-import {newGame } from "../features/boardSlice"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button';
+import { newGame } from '../features/boardSlice';
 
 const NewGame = (props) => (
   <div className="row">
@@ -14,16 +14,12 @@ const NewGame = (props) => (
   </div>
 );
 
-const mapStateToProps = (state) => {
-  return {
-    state
-  }
-}
+const mapStateToProps = (state) => ({
+  state,
+});
 
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    newGame: () => dispatch(newGame())
-  }
-}
+const mapDispatchToProps = (dispatch, props) => ({
+  newGame: () => dispatch(newGame()),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewGame)
+export default connect(mapStateToProps, mapDispatchToProps)(NewGame);

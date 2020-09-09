@@ -7,7 +7,8 @@ module.exports = {
   },
   "extends": [
     "eslint:recommended",
-    "airbnb-base"
+    "airbnb-base",
+    "react-app"
   ],
   "globals": {
     "window": true,

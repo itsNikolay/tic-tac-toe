@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from "react-redux"
+import { connect } from 'react-redux';
 import Cell from './cell';
 import { create, build } from '../features/boardSlice';
 
 const Board = (props) => {
   useEffect(() => {
-    props.subscribe()
+    props.subscribe();
   }, []);
 
   return (
@@ -30,20 +30,18 @@ const Board = (props) => {
       </tbody>
     </table>
   );
-}
+};
 
-const mapStateToProps = ( state, props ) => {
-  return {
-    state
-  }
-}
+const mapStateToProps = (state, props) => ({
+  state,
+});
 
 const mapDispatchToProps = (dispatch, props) => {
-  const received = result => dispatch(build(result))
+  const received = (result) => dispatch(build(result));
 
   return {
-    subscribe: () => dispatch(create({ room: 'RoomChannel', received }))
-  }
-}
+    subscribe: () => dispatch(create({ room: 'RoomChannel', received })),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Board)
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

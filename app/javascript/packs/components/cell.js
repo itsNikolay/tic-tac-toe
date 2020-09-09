@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from "react-redux"
+import { connect } from 'react-redux';
 import { move } from '../features/boardSlice';
 
 const backgroundColor = (player) => (
   (player == 1 ? 'black' : null) || (player == 2 ? 'white' : null)
-)
+);
 
 const Cell = (props) => (
   <td
@@ -17,19 +17,17 @@ const Cell = (props) => (
   </td>
 );
 
-const mapStateToProps = ( state, props ) => {
+const mapStateToProps = (state, props) => {
   const { cells, current_turn_user_id, winner } = state.board.room;
   return {
     player: cells[props.id],
     isCurrentUserTurn: current_turn_user_id === state.currentUser.id,
-    winner
-  }
-}
+    winner,
+  };
+};
 
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    moveAction: () => dispatch(move(props.id))
-  }
-}
+const mapDispatchToProps = (dispatch, props) => ({
+  moveAction: () => dispatch(move(props.id)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cell)
+export default connect(mapStateToProps, mapDispatchToProps)(Cell);
