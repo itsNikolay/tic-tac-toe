@@ -22,10 +22,17 @@
   "version": "0.1.0",
   "devDependencies": {
     "@testing-library/react": "^11.0.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-mocha": "^8.0.0",
     "jest": "^26.4.2",
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "test": "jest app/javascript/tests"
+    "test": "jest app/javascript/tests",
+    "lint": "eslint ./app/javascript/packs && echo \"eslint: no lint errors\"",
+    "lint-fix": "eslint --fix ./app/javascript/packs && echo \"eslint: no lint errors\""
   }
 }
