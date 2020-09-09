@@ -2,7 +2,7 @@
 
 export APP_NAME=tik-tak-toe
 export DB_NAME=tik_production
-export HOST_ADDRESS=46.101.201.95
+export HOST_ADDRESS=134.122.76.109
 
 server:
 	bin/rails s
@@ -38,7 +38,7 @@ deploy-add:
 	git remote add dokku dokku@$(HOST_ADDRESS):$(APP_NAME)
 
 deploy:
-	git push dokku backend:master
+	git push dokku master
 
 open:
 	open http://$(HOST_ADDRESS)
