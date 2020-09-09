@@ -6,7 +6,7 @@
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
-require("channels")
+import './channels';
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -21,6 +21,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 import App from './components/app';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/board';
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,35 +1,28 @@
 const INITIAL_STATE = {
-  board: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-  round: 0,
-  currentPlayer: 0,
-  winner: null,
-  finished: false
-};
-
-const winning = (board, player) => {
-  return (board[0] == player && board[1] == player && board[2] == player) ||
-    (board[3] == player && board[4] == player && board[5] == player) ||
-    (board[6] == player && board[7] == player && board[8] == player) ||
-    (board[0] == player && board[3] == player && board[6] == player) ||
-    (board[1] == player && board[4] == player && board[7] == player) ||
-    (board[2] == player && board[5] == player && board[8] == player) ||
-    (board[0] == player && board[4] == player && board[8] == player) ||
-    (board[2] == player && board[4] == player && board[6] == player)
+  room: { cells: [] },
+  currentUserId: null,
+  currentUserName: null,
+  currentUserTurn: false
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'move':
-      const player = state.currentPlayer == 0 ? 'P1' : 'P2'
-      const board = state.board.map((el, index) => (index == action.index ? player : el));
-      const winner = winning(board, player) ? player : undefined ;
+    case 'buildBoard':
+      const currentUserId =
+        action.board && action.board.current_user_id || state.currentUserId
+      const currentUserName =
+        action.board && action.board.current_user_name || state.currentUserName;
+      const actionTurn = action.board.room && action.board.room.current_turn_user_id || state.room.current_turn_user_id
+      const currentUserTurn = currentUserId === actionTurn;
+
+      console.log(currentUserId, actionTurn, currentUserTurn);
+
       return {
         ...state,
-        ...{ board: board },
-        ...{ round: state.round + 1 },
-        ...{ currentPlayer: state.currentPlayer == 0 ? 1 : 0 },
-        ...{ winner: winner },
-        ...{ finished: !!winner }
+        ...action.board,
+        currentUserId,
+        currentUserName,
+        currentUserTurn
       };
     default: return state;
   }

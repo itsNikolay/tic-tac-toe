@@ -1,0 +1,10 @@
+{
+  "name": "ruby-rails-sample",
+  "description": "The App",
+  "scripts": {
+    "dokku": {
+      "postdeploy": "bundle exec rake db:migrate"
+    }
+  }
+}
+

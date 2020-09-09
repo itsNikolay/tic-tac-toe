@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux"
-import {moveAction } from "../actions/board_action"
+import {moveRoomChannelAction } from "../actions/board_action"
 
 const backgroundColor = (player) => (
-  (player == 'P1' ? 'black' : null) || (player == 'P2' ? 'white' : null)
+  (player == 1 ? 'black' : null) || (player == 2 ? 'white' : null)
 )
 
 const Cell = (props) => (
@@ -12,21 +12,22 @@ const Cell = (props) => (
     className="cell"
     style={{ backgroundColor: backgroundColor(props.player) }}
     id={props.id}
-    onClick={props.finished ? null : props.moveAction}
+    onClick={!props.winnder && props.currentUserTurn ? props.moveAction : () => {}}
   >
   </td>
 );
 
 const mapStateToProps = ( state, props ) => {
   return {
-    player: state.board.board[props.id],
-    finished: state.board.finished
+    player: state.board.room.cells[props.id],
+    currentUserTurn: state.board.currentUserTurn,
+    winner: state.board.room.winner
   }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    moveAction: () => dispatch(moveAction(props.id))
+    moveAction: () => dispatch(moveRoomChannelAction(props.id))
   }
 }
 

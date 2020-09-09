@@ -1,10 +1,13 @@
+default: &default
+  adapter: redis
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  channel_prefix: websocket_test_production
+
 development:
-  adapter: async
+  <<: *default
 
 test:
   adapter: test
 
 production:
-  adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: tic_tac_toe_production
+  <<: *default

@@ -8,15 +8,23 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "bootstrap": "^4.5.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@testing-library/react": "^11.0.2",
+    "jest": "^26.4.2",
     "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "test": "jest app/javascript/tests"
   }
 }
